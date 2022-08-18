@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Search Component  snapshot testing for Search component 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="mb-3 row justify-content-end"
+  >
+    <input
+      aria-describedby="basic-addon1"
+      aria-label="search City"
+      class="form-control"
+      onChange={[Function]}
+      placeholder="Search City"
+      type="text"
+      value=""
+    />
+    <span
+      className="justify-content-end"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "height": "fit-content",
+          }
+        }
+      >
+        Find
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`renders header component  snapshot testing for Header component 1`] = `
+<div
+  className="d-flex bg-dark text-white justify-content-center py-4"
+>
+  Simple Weather App
+</div>
+`;
+
+exports[`renders select Units component  snapshot testing for SelectUnits component 1`] = `
+<div
+  className="row"
+>
+  <div
+    class="input-group mb-3"
+  >
+    <div
+      class="input-group-prepend"
+    >
+      <label
+        class="input-group-text"
+        for="unitsselect"
+      >
+        Choose Units
+      </label>
+    </div>
+    <select
+      class="custom-select"
+      id="unitsselect"
+      onChange={[Function]}
+    >
+      <option
+        selected={true}
+        value="metric"
+      >
+        Metric
+      </option>
+      <option
+        value="imperial"
+      >
+        Imperial
+      </option>
+    </select>
+  </div>
+</div>
+`;
