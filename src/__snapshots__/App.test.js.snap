@@ -10,17 +10,18 @@ exports[`Render Search Component  snapshot testing for Search component 1`] = `
     <input
       aria-describedby="basic-addon1"
       aria-label="search City"
-      class="form-control"
+      class="form-control "
+      id="textbox"
       onChange={[Function]}
       placeholder="Search City"
       type="text"
       value=""
     />
     <span
-      className="justify-content-end"
+      className="  justify-content-end p-2 align-bottom"
     >
       <button
-        className="btn btn-primary"
+        className="btn btn-primary "
         onClick={[Function]}
         style={
           Object {
@@ -30,6 +31,20 @@ exports[`Render Search Component  snapshot testing for Search component 1`] = `
       >
         Find
       </button>
+      <span>
+         
+        <button
+          className="btn btn-primary "
+          onClick={[Function]}
+          style={
+            Object {
+              "height": "fit-content",
+            }
+          }
+        >
+          Clear
+        </button>
+      </span>
     </span>
   </div>
 </div>

@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 
 export const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"; // Url for current locatio
-export const API_KEY = "5f1cf7783dbbfa1adfbd496ca9913718"; // Please Use API keys from openweathermap
+export const API_KEY = ""; // Please Use API keys from openweathermap
 export const BASE_SEARCH_URL = "http://api.openweathermap.org/geo/1.0/direct?q" // Url for search and find geolocation
 export const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?" //Url for forcast Api
 
