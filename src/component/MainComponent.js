@@ -18,6 +18,7 @@ const MainComponent = () => {
     const [metric, setMetric] = useState("metric");
     const [isSearchActive, setisSearchActive] = useState(false);
     const [geoLocation, setGeoLocation] = useState({});
+    const [error, setError] = useState(false);
 
     const getCurrentWeather = (api_url) => {
         axios
@@ -26,8 +27,8 @@ const MainComponent = () => {
                 setisWeatherFetch(true);
                 setTodayWeather(response.data);
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch(error => {
+                setError(true)
             });
     };
 
@@ -38,12 +39,12 @@ const MainComponent = () => {
                 setisForecastFetch(true);
                 setForecastWeather(response.data);
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch(error => {
+                setError(true)
             });
     };
-// we will show current weather by default , unless user has searched for location.
-// For user search [isSearchActive is set to true] , we must pass cordinates/geolocation , in order to get the weather data.
+    // we will show current weather by default , unless user has searched for location.
+    // For user search [isSearchActive is set to true] , we must pass cordinates/geolocation , in order to get the weather data.
     useEffect(() => {
         if (isSearchActive) {
             const API_URL =
@@ -75,45 +76,55 @@ const MainComponent = () => {
                 getForecastWeather(FORECAST_API);
             });
         }
-    }, [metric, geoLocation,isSearchActive]); // It will call the api , once these values are changed.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [metric, geoLocation, isSearchActive]); // It will call the api , once these values are changed.
     return (
-        <div className="container-fluid mt-3 bg-light py-5 px-5">
-            <div className="row mb-3 justify-content-between">
-                <div className="col-md-4">
-                    <SelectUnits metric={metric} setMetric={setMetric} />
-                </div>
-                <div className="col-md-6 d-flex">
-                    <SearchComponent
-                        isSearchActive={isSearchActive}
-                        setisSearchActive={setisSearchActive}
-                        setGeoLocation={setGeoLocation}
-                    />
-                </div>
-            </div>
-
-            {isWeatherFetch ? (
-                <CurrentWeatherComponent weather={todayWeather} metric={metric} />
-            ) : (
-                <div class="text-center">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
+        <>
+            {!error ? (
+                <div className="container-fluid mt-3 bg-light py-5 px-5">
+                    <div className="row mb-3 justify-content-between">
+                        <div className="col-md-4">
+                            <SelectUnits metric={metric} setMetric={setMetric} />
+                        </div>
+                        <div className="col-md-6 d-flex">
+                            <SearchComponent
+                                isSearchActive={isSearchActive}
+                                setisSearchActive={setisSearchActive}
+                                setGeoLocation={setGeoLocation}
+                            />
+                        </div>
                     </div>
+
+                    {isWeatherFetch ? (
+                        <CurrentWeatherComponent weather={todayWeather} metric={metric} />
+                    ) : (
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="row">
+                        {isForecastFetch ? (
+                            <WeatherForecast
+                                forecastweather={forecastWeather}
+                                metric={metric}
+                            />
+                        ) : (
+                            <div>  Loading...
+                            </div>
+                        )}
+                    </div>
+
+                </div>
+            ) : (
+                <div>
+                    <h2 class="text-bg-danger">Error Occured</h2>
+                    <h2>Unable to fetch weather data!</h2>
                 </div>
             )}
-
-            <div className="row">
-                {isForecastFetch ? (
-                    <WeatherForecast
-                        forecastweather={forecastWeather}
-                        metric={metric}
-                    />
-                ) : (
-                    <div>  Loading...
-                    </div>
-                )}
-            </div>
-
-        </div>
+        </>
     );
 };
 
