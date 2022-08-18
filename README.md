@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Please update Constant.js file with your API keys from [https://openweathermap.org/api](OpenWeathermap)
+Please update ApiHelpers.js file with your API keys from [https://openweathermap.org/api](OpenWeathermap)
 For testing purpose , API Key is attached as part of the email.
 ### `const API_KEY= ''`
 
