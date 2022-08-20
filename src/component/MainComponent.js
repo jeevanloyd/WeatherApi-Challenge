@@ -46,6 +46,7 @@ const MainComponent = () => {
     // we will show current weather by default , unless user has searched for location.
     // For user search [isSearchActive is set to true] , we must pass cordinates/geolocation , in order to get the weather data.
     useEffect(() => {
+        
         if (isSearchActive) {
             const API_URL =
                 BASE_URL +
@@ -76,8 +77,7 @@ const MainComponent = () => {
                 getForecastWeather(FORECAST_API);
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [metric, geoLocation, isSearchActive]); // It will call the api , once these values are changed.
+    }, [metric, geoLocation]); // It will call the api , once these values are changed.
     return (
         <>
             {!error ? (

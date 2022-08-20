@@ -11,8 +11,8 @@ Since because of time restrictions and busy schedule of current project work, i 
 1. Displayed current weather based on device location ( Must allow location service for browsers).
 2. Forcast for 5 days have been displayed.
 3. Users can switch between the units (Metric by default)
-4. Search based on city names have been achieved.
-5. User can clear off the box and current weather location will be displayed.
+4. Search based on city names have been achieved. *** Search based on "Cityname","Country code" (Ex: Geelong,AU) ***
+5. User can clear off the box .
 6. Unit testing is done for most of the components .
 
 
@@ -28,6 +28,9 @@ Unit test using React Testing library (Jest) has been done for components. I hav
 --- Solution Planned : Either we can add a new feature (Slider), where we can display hourly forcast for that particular day. Or Use a API that provides day to day forcast Data.
 
 3. UI could be made more interactive with Material UI / Latest CSS frameworks.
+
+4. Since the search Api is restricted to 5 values, some cities wont be returned from the api for AU Location(Ex:Clayton). 
+--- As a solution for this, We have restricted the search only for Australia
 ## Available Scripts
 
 In the project directory, you can run:

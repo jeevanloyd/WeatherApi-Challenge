@@ -5,6 +5,7 @@ const axios = require("axios").default;
 // Search Component : User can search for specfic location . 
 // This method returns the geolocation cordinates ie.  Lat and lon
 // There are few drawbacks with this Api, we might need to pay to upgrade and get more benifits from this Api.
+//This Api is restricted to max 5 cities and for this reason, i have restricted this search only for Australia.
 
 const SearchComponent = (props) => {
 
@@ -14,6 +15,7 @@ const SearchComponent = (props) => {
         if (cityName !== "") {
             props.setisSearchActive(true)
             var SEARCH_API_URL =
+                // eslint-disable-next-line no-useless-concat
                 BASE_SEARCH_URL + "=" + cityName + "&limit=1&appid=" + API_KEY;
             axios
                 .get(SEARCH_API_URL)
@@ -27,6 +29,7 @@ const SearchComponent = (props) => {
 
                 })
                 .catch(function (error) {
+                    alert("Please select a correct location in Australia.")
                     console.log(error);
                 });
         }
@@ -35,7 +38,6 @@ const SearchComponent = (props) => {
     const onClearBtnClick = () => {
         if (cityName !== '') {
             document.getElementById("textbox").value = "";
-            props.setisSearchActive(false)
             setcityName('')
         }
     }
@@ -57,6 +59,7 @@ const SearchComponent = (props) => {
                     placeholder="Search City"
                     aria-label="search City"
                     aria-describedby="basic-addon1"
+                    data-toggle="tooltip" data-placement="top" title="Please enter CityName,CountryCode(Ex:geelong,AU)"
                     value={cityName}
                     onChange={(e) => SearchtextBox(e.target.value)}
                 />
